@@ -56,7 +56,9 @@ module.exports = env => {
     const entryPath = `.${sep}${entryModule}.ts`;
     const entries = { bundle: entryPath };
 
-    const tsConfigPath = resolve(projectRoot, "tsconfig.tns.json");
+    const buildConfiguration = production ? "release" : "debug";
+
+    const tsConfigPath = resolve(projectRoot, `tsconfig.tns.${buildConfiguration}.json`);
 
     const areCoreModulesExternal = Array.isArray(env.externals) && env.externals.some(e => e.indexOf("tns-core-modules") > -1);
     if (platform === "ios" && !areCoreModulesExternal) {
@@ -104,7 +106,8 @@ module.exports = env => {
                 "node_modules",
             ],
             alias: {
-                '~': appFullPath
+                '~': appFullPath,
+                'settings': join(appFullPath, `settings.${buildConfiguration}.json`)
             },
             // resolve symlinks to symlinked modules
             symlinks: true
