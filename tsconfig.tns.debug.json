@@ -1,5 +1,5 @@
 {
-    "extends": "./tsconfig",
+    "extends": "./tsconfig.debug",
     "compilerOptions": {
         "module": "esNext",
         "moduleResolution": "node"

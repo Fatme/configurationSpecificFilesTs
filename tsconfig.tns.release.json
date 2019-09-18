@@ -1,0 +1,7 @@
+{
+    "extends": "./tsconfig.release",
+    "compilerOptions": {
+        "module": "esNext",
+        "moduleResolution": "node"
+    }
+}
