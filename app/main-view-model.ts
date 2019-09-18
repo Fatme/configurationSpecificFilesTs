@@ -1,5 +1,7 @@
 import { Observable } from "tns-core-modules/data/observable";
 
+import * as settings from "settings";
+
 export class HelloWorldModel extends Observable {
 
     private _counter: number;
@@ -25,6 +27,7 @@ export class HelloWorldModel extends Observable {
     }
 
     onTap() {
+        console.log("======= The current configuration is: ", settings.configuration);
         this._counter--;
         this.updateMessage();
     }
